@@ -23,7 +23,7 @@ def login(request):
 
             try:
                 user = models.JobHunter.objects.get(userName=username)
-            except :
+            except:
                 message = '用户不存在！'
                 return render(request, 'login/login.html', locals())
 
@@ -39,4 +39,6 @@ def login(request):
     return render(request, 'jmr/login.html', locals())
 
 
-
+def resume(request):
+    resume_form = forms.ResumeForm()
+    return render(request, 'jmr/resume.html', locals())

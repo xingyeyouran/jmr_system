@@ -10,8 +10,8 @@ class JobHunter(models.Model):
 
 class Resume(models.Model):
     JobHunter = models.ForeignKey(JobHunter, on_delete=models.CASCADE)
-    age = models.IntegerField()
     birthday = models.DateTimeField("birthday", default=timezone.now)
+    gender = models.CharField(verbose_name="gender", choices=(('man', '男'), ('woman', '女')), max_length=6)
     major = models.CharField(max_length=40, default='aa')
     education = models.CharField(max_length=10, default='aa')
     endowment = models.CharField(max_length=20, default='aa')
