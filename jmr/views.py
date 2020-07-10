@@ -42,3 +42,8 @@ def login(request):
 def resume(request):
     resume_form = forms.ResumeForm()
     return render(request, 'jmr/resume.html', locals())
+
+
+def enterprise(request):
+    enterprise_form = forms.EnterpriseForm()
+    return render(request, 'jmr/enterprise.html', locals())

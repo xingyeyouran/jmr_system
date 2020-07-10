@@ -20,3 +20,11 @@ class ResumeForm(forms.Form):
     seek_education = forms.ChoiceField(label='教育程度',
                                        choices=(('seniorHighSchool', '高中'), ('college', '本科'), ('postgraduate', '研究生'),
                                                 ('doctor', '博士生')))
+
+
+class EnterpriseForm(forms.Form):
+    enterprise_name = forms.CharField(label='企业名称', max_length=40)
+    enterprise_location = forms.CharField(label='企业地址', max_length=120)
+    enterprise_tel = forms.IntegerField(label='企业电话')
+    enterprise_mail = forms.EmailField(label='企业邮箱')
+    enterprise_info = forms.CharField(label='企业简介', max_length=300)
