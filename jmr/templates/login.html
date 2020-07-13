@@ -1,0 +1,36 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- 上述meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>登录</title>
+      <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+  </head>
+<body class="login">
+    <div id="container" >
+
+        <div id="header" align="center">
+<h1 id="site-name"><a>J M R</a></h1>
+    </div>
+
+            <div id="content">
+                <form class="form-login" action={% url 'index' %} method="post">
+                  {% if message %}
+                    <div class="alert alert-warning">{{ message }}</div>
+                  {% endif %}
+                  {% csrf_token %}
+
+                  {{ login_form }}
+
+                    <div class="submit-row">
+              <button type="submit" class="btn btn-primary float-right"><label>登 录</label></button>
+                   </div>
+
+                </form>
+            </div>
+    </div> <!-- /container -->
+  </body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>招聘信息管理</title>
+</head>
+<body>
+Jobs:
+<br>
+<ul>
+{% for job in jobs %}
+    <li>
+        <a href="{% url 'jobDetail' job.id %}">{{ job.job_name }}</a>
+        <a href="{% url 'enterpriseUpdateJob' enterprise.id job.id %}">Edit</a>
+        <a href="{% url 'enterpriseDeleteJob' enterprise.id job.id %}">Delete</a>
+    </li>
+{% endfor %}
+</ul>
+<a href="{% url 'enterpriseAddJob' enterprise.id %}">Add more job</a>
+<br>
+<a href="{% url 'enterpriseIndex' enterprise.id %}">Return</a>
+</body>
+</html>

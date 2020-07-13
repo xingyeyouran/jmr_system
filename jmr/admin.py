@@ -1,6 +1,8 @@
 from django.contrib import admin
-from .models import JobHunter, Resume
+from .models import *
 
-admin.site.register(Resume)
-admin.site.register(JobHunter)
 # Register your models here.
+admin.site.register(Employee)
+admin.site.register(Resume)
+admin.site.register(Enterprise)
+admin.site.register(Job)

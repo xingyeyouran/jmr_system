@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/default.css' %}">
+    <!--必要样式-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/component.css' %}">
+    <script  src="../../static/js/modernizr.custom.js"></script>
+    <title>用户首页</title>
+
+
+</head>
+<body>
+
+<div class="container">
+    <header class="clearfix">
+        <h1>J M R</h1>
+    </header>
+    <div class="main">
+
+        <div class="side">
+            <nav class="dr-menu">
+                <div class="dr-trigger"><span class="dr-icon dr-icon-menu"></span><a class="dr-label">帐户</a></div>
+                <ul>
+                    <li><a class="dr-icon dr-icon-user" href="{% url 'employeeUpdate' employee.id %}">用户信息管理</a></li>
+                    <!--					<li><a class="dr-icon dr-icon-camera" href="#">视频</a></li>-->
+                    <li><a class="dr-icon dr-icon-heart" href="{% url 'resumeUpdate' employee.id %}">简历信息管理</a></li>
+                    					<li><a class="dr-icon dr-icon-bullhorn" href="#">已发送简历</a></li>
+<!--                    					<li><a class="dr-icon dr-icon-download" href="#">下载</a></li>-->
+<!--                    <li><a class="dr-icon dr-icon-settings" href="#">进行简历匹配</a></li>-->
+                    <li><a class="dr-icon dr-icon-switch" href="#">退出</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="article">
+        <p>职位列表</p>
+            <table>
+                <td>
+                <th>Name:</th>
+                <th>Salary:</th>
+                <th>Major:</th>
+                <th>Degree:</th>
+                <th>Detail:</th>
+                </td>
+                {% for job in jobs %}
+                    <tr>
+                        <th></th>
+                        <th>{{ job.job_name }}</th>
+                        <th>{{ job.job_salary }}</th>
+                        <th>{{ job.job_major }}</th>
+                        <th>{{ job.job_degree }}</th>
+                        <th><a href="{% url 'jobDetail' job.id %}" >Detail</a></th>
+                    </tr>
+                {% endfor %}
+            </table>
+        <br/>
+        <p>按简历推荐</p>
+        <table>
+                <td>
+                <th>Name:</th>
+                <th>Salary:</th>
+                <th>Major:</th>
+                <th>Degree:</th>
+                <th>Detail:</th>
+                </td>
+                {% for job in recommendedJobs %}
+                    <tr>
+                        <th></th>
+                        <th>{{ job.job_name }}</th>
+                        <th>{{ job.job_salary }}</th>
+                        <th>{{ job.job_major }}</th>
+                        <th>{{ job.job_degree }}</th>
+                        <th><a href="{% url 'jobDetail' job.id %}" >Detail</a></th>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div><!-- /container -->
+<script  src="../../static/js/ytmenu.js"></script>
+</body>
+</html>

@@ -15,8 +15,33 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from jmr import views
 
+# urlpatterns = [
+#     path('jmr/', include('jmr.urls')),
+#     path('admin/', admin.site.urls),
+# ]
 urlpatterns = [
-    path('jmr/', include('jmr.urls')),
     path('admin/', admin.site.urls),
+    path('', views.login, name='index'),
+    path('job/list', views.jobList, name='jobList'),
+    path('job/<int:id>', views.jobDetail, name='jobDetail'),
+    path('employee/<int:id>', views.employeeIndex, name='employeeIndex'),
+    path('employee/<int:id>/edit/employee_update', views.employeeUpdate, name='employeeUpdate'),
+    path('employee/<int:id>/edit/employee_update_handler', views.employeeUpdateHandler, name='employeeUpdateHandler'),
+    path('employee/<int:id>/edit/resume_update', views.resumeUpdate, name='resumeUpdate'),
+    path('employee/<int:id>/edit/resume_update_handler', views.resumeUpdateHandler, name='resumeUpdateHandler'),
+    path('enterprise/list', views.enterpriseList, name='enterpriseList'),
+    path('enterprise/<int:id>', views.enterpriseIndex, name='enterpriseIndex'),
+    path('enterprise/<int:id>/Detail', views.enterpriseDetail, name='enterpriseDetail'),
+    path('enterprise/<int:id>/Jobs', views.enterpriseJobs, name='enterpriseJobs'),
+    path('enterprise/<int:id>/edit/enterprise_update', views.enterpriseUpdate, name='enterpriseUpdate'),
+    path('enterprise/<int:id>/edit/enterprise_update_handler', views.enterpriseUpdateHandler,
+         name='enterpriseUpdateHandler'),
+    path('enterprise/<int:id>/edit/job_add', views.enterpriseAddJob, name='enterpriseAddJob'),
+    path('enterprise/<int:id>/edit/job_add_handler', views.enterpriseAddJobHandler, name='enterpriseAddJobHandler'),
+    path('enterprise/<int:id>/edit/<int:jid>/job_update', views.enterpriseUpdateJob, name='enterpriseUpdateJob'),
+    path('enterprise/<int:id>/edit/<int:jid>/job_update_handler', views.enterpriseUpdateJobHandler,
+         name='enterpriseUpdateJobHandler'),
+    path('enterprise/<int:id>/edit/<int:jid>/job_delete', views.enterpriseDeleteJob, name='enterpriseDeleteJob'),
 ]
